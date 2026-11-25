@@ -9,5 +9,5 @@ First public release.
 - **Stonecutter:** load a stack of a material from storage; leftovers go back into a Magic Chest.
 - **Smithing table:** netherite upgrades with the template, item and ingot loaded from your inventory or chests (enchanted gear keeps its enchantments).
 - **/storage:** all Magic Chest contents in one menu: take a stack / 1 / as many as fit, search, sort, shift-click to store, store your whole inventory.
-- Renamed, enchanted and plugin items in chests are never used as crafting ingredients; items always leave the chest before they go anywhere else.
+- Renamed, enchanted and plugin items in chests are never used as crafting ingredients (except the gear you upgrade at the smithing table, which keeps its enchantments and name); items always leave the chest before they go anywhere else.
 - SQLite storage, no dependencies, everything configurable with MiniMessage.

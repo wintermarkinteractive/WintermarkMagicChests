@@ -14,7 +14,7 @@ Place Magic Chests in your base and every crafting table, furnace, smoker, blast
 - **Stonecutter and smithing table.** Pick a material or a netherite upgrade and the station opens with everything already in place. Leftover stone goes back into your chest. Your enchanted gear (inventory or chest) keeps its enchantments.
 - **`/storage`.** Everything in your Magic Chests in one menu: take a stack, take 1, take as many as fit, search, sort, shift-click to store items, or store your whole inventory with one click.
 - **SMP-safe.** Each Magic Chest has an owner. Only the owner and players they trust can open it or craft with it, and only the owner can break it. Explosion-proof. A Magic Chest never joins a normal chest into a double chest.
-- **Items stay safe.** Renamed, enchanted and plugin items (keys, banknotes...) in your chests are never used as crafting ingredients. Items always leave the chest before they go anywhere else, so nothing can be duplicated.
+- **Items stay safe.** Renamed, enchanted and plugin items (keys, banknotes...) in your chests are never used as crafting ingredients. One exception: at the smithing table the gear you upgrade may be renamed or enchanted (it keeps everything); templates and ingots must still be plain, and plugin items are never used. Items always leave the chest before they go anywhere else, so nothing can be duplicated.
 - **Lightweight.** Chests are kept in a small in-memory index per chunk. Furnaces only work while their chunk is loaded. SQLite storage, no dependencies.
 - **Fully configurable.** Range, recipe, fuels, amounts, every menu text and message (MiniMessage colors). New settings are added to your config automatically on updates.
 
@@ -96,7 +96,7 @@ range:
   horizontal: 16           # how far a station looks for Magic Chests
   vertical: 8
 take-order: CHESTS_FIRST   # or INVENTORY_FIRST
-only-plain-items: true     # never craft with renamed / enchanted / plugin items from chests
+only-plain-items: true     # never craft with renamed / enchanted / plugin items from chests (smithing: the upgraded gear may be)
 max-chests: 0              # per player, 0 = no limit
 protect-contents: true     # only owner + trusted players can open a Magic Chest
 explosion-proof: true
