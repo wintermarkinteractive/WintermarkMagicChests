@@ -1,0 +1,20 @@
+name: WintermarkMagicChests
+version: '${version}'
+main: io.github.wintermarkinteractive.magicchests.MagicChestsPlugin
+description: Magic Chests - craft with the items in your chests, like Enshrouded.
+author: Wintermark Interactive
+website: https://github.com/wintermarkinteractive
+api-version: '26.3'
+permissions:
+  wintermark.magicchests.use:
+    description: Place Magic Chests and craft with their items.
+    default: true
+  wintermark.magicchests.storage:
+    description: Open /storage (Magic Chests near you).
+    default: true
+  wintermark.magicchests.storage.anywhere:
+    description: /storage shows all your Magic Chests, wherever they are (loaded chunks).
+    default: false
+  wintermark.magicchests.admin:
+    description: /magicchests give and reload; open and break every Magic Chest.
+    default: op

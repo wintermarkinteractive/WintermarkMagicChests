@@ -1,0 +1,294 @@
+# ============================================================
+#  Wintermark Magic Chests - config.yml
+#  Crafting stations near your Magic Chests can use the items inside them.
+#  Texts use MiniMessage: https://docs.advntr.dev/minimessage/format.html
+# ============================================================
+
+# How far a crafting station looks for Magic Chests (blocks around the station).
+range:
+  horizontal: 16
+  vertical: 8
+
+# Where ingredients are taken from first: CHESTS_FIRST or INVENTORY_FIRST.
+take-order: CHESTS_FIRST
+
+# Only use items from Magic Chests that have no custom name, lore, enchantments or plugin data.
+# Keeps renamed, enchanted and plugin items (keys, banknotes...) safe from crafting.
+only-plain-items: true
+
+# Max Magic Chests per player. 0 = no limit. More with wintermark.magicchests.limit.<n>
+max-chests: 0
+
+# Trusted players can open your Magic Chests and craft with them. false = only the owner (and admins) can open them.
+protect-contents: true
+
+# Magic Chests can't be destroyed by explosions.
+explosion-proof: true
+
+# The Magic Chest item and its crafting recipe.
+item:
+  name: "<light_purple><bold>Magic Chest"
+  lore:
+    - "<gray>Crafting tables nearby can use"
+    - "<gray>the items inside this chest."
+  glow: true
+  # Title of the chest screen.
+  title: "<dark_purple>Magic Chest"
+
+recipe:
+  enabled: true
+  # 3 rows; every letter needs a material below. A space = empty slot.
+  shape:
+    - " E "
+    - "ACA"
+    - " A "
+  ingredients:
+    E: ENDER_PEARL
+    A: AMETHYST_SHARD
+    C: CHEST
+
+particles:
+  enabled: true
+  # Any particle without extra data, e.g. ENCHANT, PORTAL, END_ROD, WITCH
+  type: ENCHANT
+  # Only shown to players within this distance.
+  view-distance: 16
+
+# Sneak + right-click a furnace, smoker or blast furnace near your Magic Chests: "Smelt from storage".
+# The furnace keeps loading the item and fuel from your Magic Chests until the amount is done.
+furnace:
+  enabled: true
+  # Default for the "finished items go to a Magic Chest" button.
+  output-to-chest: true
+  # How many items a left-click / right-click starts. Shift-click = everything in your chests.
+  amounts:
+    left: 8
+    right: 64
+  # Fuel taken from your Magic Chests, in this order. Item tags start with #.
+  fuels:
+    - COAL
+    - CHARCOAL
+    - COAL_BLOCK
+    - BLAZE_ROD
+    - DRIED_KELP_BLOCK
+    - "#minecraft:planks"
+    - "#minecraft:logs"
+
+smelt-menu:
+  title: "<dark_purple><bold>Smelt from storage</bold></dark_purple> <dark_gray>(<page>/<pages>)"
+  # Placeholders: <have> <result> <left> <right>
+  entry-lore:
+    - "<gray>In your Magic Chests: <white><have>"
+    - "<gray>Becomes: <white><result>"
+    - ""
+    - "<yellow>Left-click: <white>smelt <left>"
+    - "<yellow>Right-click: <white>smelt <right>"
+    - "<yellow>Shift-click: <white>smelt all <have>"
+  empty-name: "<gray>Nothing to smelt"
+  empty-lore:
+    - "<dark_gray>Put ores, raw food or sand"
+    - "<dark_gray>in your Magic Chests."
+  prev-name: "<yellow>Previous page"
+  next-name: "<yellow>Next page"
+  output-on-name: "<aqua>Finished items: <white>to Magic Chest"
+  output-off-name: "<aqua>Finished items: <white>stay in the furnace"
+  output-lore:
+    - "<gray>Click to switch."
+  status-none-name: "<gray>Not smelting from storage"
+  status-none-lore:
+    - "<dark_gray>Pick an item above to start."
+  # Placeholders: <item> <remaining> <total> <owner>
+  status-name: "<gold>Smelting <white><item>"
+  status-lore:
+    - "<gray>Still to load: <white><remaining></white> of <white><total>"
+    - "<gray>Started by <white><owner>"
+    - ""
+    - "<red>Click to stop"
+  stations:
+    furnace: "Furnace"
+    smoker: "Smoker"
+    blast_furnace: "Blast Furnace"
+
+# Sneak + right-click a crafting table near your Magic Chests: "Storage Crafting" menu.
+craft-menu:
+  enabled: true
+  title: "<dark_purple><bold>Storage Crafting</bold></dark_purple> <dark_gray>(<page>/<pages>)"
+  # Shift-click crafts up to this many result items at once.
+  shift-limit: 64
+  # Added under every recipe. Placeholders: <max> (times you can craft it) <one> <shift>
+  entry-lore:
+    - ""
+    - "<gray>You can craft it <white><max>x"
+    - "<yellow>Click: <white>craft <one>"
+    - "<yellow>Shift-click: <white>craft <shift>"
+  empty-name: "<gray>Nothing to craft"
+  empty-lore:
+    - "<dark_gray>Put materials in your Magic Chests,"
+    - "<dark_gray>or change the category / search."
+  prev-name: "<yellow>Previous page"
+  next-name: "<yellow>Next page"
+  # Placeholders for the buttons: <category> <search> <count> <chests> <page> <pages>
+  category-name: "<aqua>Category: <white><category>"
+  category-lore:
+    - "<gray>Left-click: next category"
+    - "<gray>Right-click: previous category"
+  search-name: "<aqua>Search"
+  search-active-name: "<aqua>Search: <white><search>"
+  search-lore:
+    - "<gray>Left-click: search by item name"
+    - "<gray>Right-click: clear the search"
+  info-name: "<light_purple>Storage Crafting"
+  info-lore:
+    - "<gray>Recipes you can make: <white><count>"
+    - "<gray>Magic Chests in range: <white><chests>"
+    - ""
+    - "<dark_gray>Uses your inventory and the Magic Chests"
+    - "<dark_gray>near this crafting table."
+  categories:
+    all: "All"
+    building: "Building"
+    redstone: "Redstone"
+    equipment: "Equipment"
+    misc: "Misc"
+
+search-dialog:
+  title: "<light_purple>Search recipes"
+  body: "<gray>Type part of an item name, e.g. <white>planks</white> or <white>pickaxe</white>."
+  input-label: "Item name"
+  confirm: "<green>Search"
+  cancel: "Back"
+
+# Sneak + right-click a stonecutter near your Magic Chests: pick a material, it is loaded into the stonecutter.
+# Leftover input goes back into a Magic Chest when you close the stonecutter.
+stonecutter-menu:
+  enabled: true
+  title: "<dark_purple><bold>Stonecutter from storage</bold></dark_purple> <dark_gray>(<page>/<pages>)"
+  # Placeholders: <have> <options> <load>
+  entry-lore:
+    - "<gray>In your Magic Chests: <white><have>"
+    - "<gray>Can become <white><options></white> different blocks"
+    - ""
+    - "<yellow>Click: <white>load <load> into the stonecutter"
+  empty-name: "<gray>Nothing to cut"
+  empty-lore:
+    - "<dark_gray>Put stone, logs or copper"
+    - "<dark_gray>in your Magic Chests."
+  info-name: "<light_purple>Stonecutter from storage"
+  info-lore:
+    - "<gray>Pick a material: it goes into the"
+    - "<gray>stonecutter and the normal screen opens."
+
+# Sneak + right-click a smithing table near your Magic Chests: netherite upgrades from storage.
+smithing-menu:
+  enabled: true
+  title: "<dark_purple><bold>Smithing from storage</bold></dark_purple> <dark_gray>(<page>/<pages>)"
+  # Placeholders: <template> <base> <addition> <from>
+  entry-lore:
+    - "<gray>Uses: <white><template>"
+    - "<gray>+ <white><base></white> <dark_gray>(from <from>)"
+    - "<gray>+ <white><addition>"
+    - ""
+    - "<yellow>Click: <white>put it in the smithing table"
+  from-inventory: "your inventory"
+  from-chest: "a Magic Chest"
+  empty-name: "<gray>Nothing to upgrade"
+  empty-lore:
+    - "<dark_gray>You need a smithing template, the item"
+    - "<dark_gray>and a netherite ingot (inventory or chests)."
+  info-name: "<light_purple>Smithing from storage"
+  info-lore:
+    - "<gray>Your own gear (enchanted tools...) is"
+    - "<gray>used first, then items from your chests."
+
+# /storage: everything in your Magic Chests in one menu.
+storage-command:
+  # Magic Chests within this many blocks of you. wintermark.magicchests.storage.anywhere = all of them.
+  range: 32
+
+storage-menu:
+  title: "<dark_purple><bold>Storage</bold></dark_purple> <dark_gray>(<page>/<pages>)"
+  # Placeholders: <amount> <stack>
+  entry-lore:
+    - ""
+    - "<gray>In storage: <white><amount>"
+    - "<yellow>Click: <white>take <stack>"
+    - "<yellow>Right-click: <white>take 1"
+    - "<yellow>Shift-click: <white>take as many as fit"
+  empty-name: "<gray>Your Magic Chests are empty"
+  empty-lore:
+    - "<dark_gray>Shift-click items in your inventory"
+    - "<dark_gray>to put them in storage."
+  sort-name: "<aqua>Sort: <white><sort>"
+  sort-lore:
+    - "<gray>Click to switch."
+  sort-amount-text: "most first"
+  sort-name-text: "A-Z"
+  info-name: "<light_purple>Storage"
+  info-lore:
+    - "<gray>Magic Chests: <white><chests>"
+    - "<gray>Kinds of items: <white><kinds>"
+    - "<gray>Items in total: <white><total>"
+    - ""
+    - "<dark_gray>Shift-click your own items to store them."
+  deposit-name: "<green>Store your inventory"
+  deposit-lore:
+    - "<gray>Puts everything except your hotbar"
+    - "<gray>into your Magic Chests."
+
+storage-search-dialog:
+  title: "<light_purple>Search storage"
+  body: "<gray>Type part of an item name, e.g. <white>iron</white> or <white>log</white>."
+  input-label: "Item name"
+  confirm: "<green>Search"
+  cancel: "Back"
+
+messages:
+  prefix: "<dark_gray>[<light_purple>Magic Chests</light_purple>]</dark_gray> "
+  placed: "<prefix><gray>Magic Chest placed. Crafting tables within <white><range></white> blocks can use its items."
+  broken: "<prefix><gray>Magic Chest removed."
+  limit-reached: "<prefix><red>You already have <max> Magic Chests."
+  not-yours: "<prefix><red>This Magic Chest belongs to <white><owner></white>."
+  cant-break: "<prefix><red>Only <white><owner></white> can break this Magic Chest."
+  recipe-tip: "<prefix><gray>Your Magic Chests are in range. Tip: click the <yellow>recipe book</yellow> filter so it shows <white>all</white> recipes, then click one to fill the grid from your chests."
+  filled-from-chests: ""
+  crafted: ""
+  craft-failed: "<prefix><red>Not enough materials any more."
+  smelt-started: "<prefix><gray>Smelting <white><amount>x <item></white> from your Magic Chests."
+  smelt-done: "<prefix><green>Done smelting <white><amount>x <item></white> <dark_gray>(<x> <y> <z>)"
+  smelt-out: "<prefix><yellow>No more <white><item></white> in your Magic Chests - the furnace at <x> <y> <z> stopped."
+  smelt-no-fuel: "<prefix><yellow>The furnace at <x> <y> <z> needs fuel: put coal or wood in a Magic Chest."
+  smelt-stopped: "<prefix><gray>Stopped smelting <white><item></white>. Items already in the furnace stay there."
+  smelt-none: "<prefix><red>There is none of that in your Magic Chests any more."
+  furnace-busy: "<prefix><red>This furnace is still cooking <white><item></white>. Take it out first."
+  inventory-full: "<prefix><red>Your inventory is full."
+  deposited: "<prefix><gray>Stored <white><amount></white> items in your Magic Chests."
+  furnace-in-use: "<prefix><red>Someone else is smelting with this furnace."
+  no-permission: "<prefix><red>You don't have permission."
+  players-only: "<prefix><red>Only players can do that."
+  player-not-found: "<prefix><red>Player <white><player></white> not found."
+  given: "<prefix><gray>Gave <white><amount>x</white> Magic Chest to <yellow><player></yellow>."
+  received: "<prefix><gray>You received <white><amount>x</white> Magic Chest."
+  trusted-added: "<prefix><gray><yellow><player></yellow> can now open and craft with your Magic Chests."
+  trusted-removed: "<prefix><gray><yellow><player></yellow> can no longer use your Magic Chests."
+  trusted-already: "<prefix><gray><yellow><player></yellow> is already trusted."
+  trusted-not: "<prefix><gray><yellow><player></yellow> was not trusted."
+  trust-self: "<prefix><red>You can't trust yourself."
+  trusted-header: "<prefix><gray>Trusted players: <white><list>"
+  trusted-none: "<prefix><gray>You haven't trusted anyone. <dark_gray>/magicchests trust \\<player>"
+  list-header: "<prefix><gray>Your Magic Chests (<white><count></white>):"
+  list-line: "<dark_gray> - <gray><world> <white><x> <y> <z>"
+  list-more: "<dark_gray>   ... and <more> more"
+  list-none: "<prefix><gray>You don't have any Magic Chests yet."
+  info: "<prefix><gray>Magic Chest of <yellow><owner></yellow> at <white><x> <y> <z></white>. <dark_gray>You can use it: <use>"
+  info-none: "<prefix><gray>Look at a Magic Chest (within 6 blocks)."
+  reloaded: "<prefix><gray>Config reloaded."
+  help: |-
+    <gold><bold>Magic Chests</bold></gold> <dark_gray>-</dark_gray> <gray>craft with the items in your chests
+    <yellow>/magicchests trust \<player></yellow> <gray>- let a friend use your Magic Chests
+    <yellow>/magicchests untrust \<player></yellow> <gray>- remove a friend
+    <yellow>/magicchests trusted</yellow> <gray>- who you trust
+    <yellow>/magicchests list</yellow> <gray>- where your Magic Chests are
+    <yellow>/magicchests info</yellow> <gray>- about the Magic Chest you look at
+  help-admin: |-
+    <yellow>/magicchests give \<player> [amount]</yellow> <gray>- give Magic Chests
+    <yellow>/magicchests reload</yellow> <gray>- reload config.yml
