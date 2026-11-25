@@ -14,6 +14,7 @@ take-order: CHESTS_FIRST
 
 # Only use items from Magic Chests that have no custom name, lore, enchantments or plugin data.
 # Keeps renamed, enchanted and plugin items (keys, banknotes...) safe from crafting.
+# Exception: the gear you upgrade at a smithing table may be renamed/enchanted (it keeps everything).
 only-plain-items: true
 
 # Max Magic Chests per player. 0 = no limit. More with wintermark.magicchests.limit.<n>
